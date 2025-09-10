@@ -179,17 +179,19 @@ export default function Page() {
             <div className="text-xl font-semibold">Alex Morrison</div>
             <div className="small-muted">Senior Journalist</div>
             <div className="mt-4 grid grid-cols-3 gap-3">
-              {[{ label: "Articles", value: "34" }, { label: "Followers", value: "980" }, { label: "Rating", value: "8.9" }].map(
-                (s) => (
-                  <div
-                    key={s.label}
-                    className="rounded-xl border border-slate-200 bg-slate-50 p-3 text-center"
-                  >
-                    <div className="text-lg font-semibold">{s.value}</div>
-                    <div className="small-muted">{s.label}</div>
-                  </div>
-                )
-              )}
+              {[
+                { label: "Articles", value: "34" },
+                { label: "Followers", value: "980" },
+                { label: "Rating", value: "8.9" },
+              ].map((s) => (
+                <div
+                  key={s.label}
+                  className="rounded-xl border border-slate-200 bg-slate-50 p-3 text-center"
+                >
+                  <div className="text-lg font-semibold">{s.value}</div>
+                  <div className="small-muted">{s.label}</div>
+                </div>
+              ))}
             </div>
           </div>
           <div className="flex flex-col gap-2">
@@ -204,15 +206,35 @@ export default function Page() {
           </div>
         </aside>
 
-        {/* 7) Flechas + chips */}
-        <div className="col-span-6 md:col-span-3 flex items-center justify-center gap-4">
-          <button className="card p-3"><ChevronLeftIcon className="h-6 w-6" /></button>
-          <button className="card p-3"><ChevronRightIcon className="h-6 w-6" /></button>
-        </div>
-        <div className="col-span-6 md:col-span-2 flex flex-wrap items-center gap-3">
-          {["Donald Trump", "USA", "Politics", "2020"].map((t) => (
-            <span key={t} className="tag">{t}</span>
-          ))}
+        {/* 7) Recuadro inferior: flechas + chips en un solo bloque alineado */}
+        <div className="col-span-12 md:col-start-8 md:col-span-5 flex items-center justify-between">
+          {/* Flechas */}
+          <div className="flex items-center gap-4">
+            <button
+              className="grid h-14 w-14 place-content-center rounded-3xl bg-white shadow-soft"
+              aria-label="Anterior"
+            >
+              <ChevronLeftIcon className="h-5 w-5 text-slate-800" />
+            </button>
+            <button
+              className="grid h-14 w-14 place-content-center rounded-3xl bg-white shadow-soft"
+              aria-label="Siguiente"
+            >
+              <ChevronRightIcon className="h-5 w-5 text-slate-800" />
+            </button>
+          </div>
+
+          {/* Chips */}
+          <div className="flex max-w-[360px] flex-wrap justify-end gap-3">
+            {["Donald Trump", "USA", "Politics", "2020"].map((t) => (
+              <span
+                key={t}
+                className="inline-flex items-center rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700"
+              >
+                {t}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </main>
